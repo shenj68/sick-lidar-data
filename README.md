@@ -34,3 +34,16 @@ To use the library in a driver the path of the installation has to be added to t
 ```
 export CMAKE_PREFIX_PATH=<path to install folder>
 ```
+
+### Ethernet
+
+Direct ethernet connection from sensor to Jetson, type command below in the terminal while the ETH status is not connecting:
+
+```
+sudo ip addr add <ip_thats_close_to_sensorip>/24 dev eth0
+```
+e.g. 
+
+```sensor_ip = 192.168.1.21```
+
+```sudo ip addr add 192.168.1.20/24 dev eth0```
