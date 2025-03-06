@@ -2,9 +2,20 @@
 
 Drivers: https://github.com/SICKAG/sick_safetyscanners_base
 
+Working for:
+Nvidia Jetson Orin AGX
+Jetpack 6.0 (L4T 36.3.0)
+
 ### Installation
 
 For installation this github repository has to be cloned and afterwards installed. If a custom install directory is wanted use the -DCMAKE_INSTALL_PREFIX option to specify a path.
+
+Install boost:
+```
+sudo apt-get install libboost-system-dev
+sudo apt-get install libboost-thread-dev
+sudo apt-get install libboost-chrono-dev
+```
 
 ```bash
 git clone https://github.com/SICKAG/sick_safetyscanners_base.git
