@@ -19,6 +19,7 @@ sudo apt-get install libboost-chrono-dev
 
 Install OpenCV
 ```
+sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
 sudo apt install libopencv-dev
 ```
 
@@ -52,3 +53,7 @@ e.g.
 ```sensor_ip = 192.168.1.21```
 
 ```sudo ip addr add 192.168.1.20/24 dev eth0```
+
+Note: if it returns a "RTNETLINK answers: File exists" message:
+Go to the Network Ethernet in settings > turn on connecting and turn it off.
+Try command again.
