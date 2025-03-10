@@ -450,7 +450,7 @@
 #include <typeinfo>
 
 std::vector<sick::datastructure::ScanPoint> g_scan_points;
-std::vector<int> g_interrupted_beams;
+//std::vector<int> g_interrupted_beams;
 std::mutex g_data_mutex;
 
 // void printIntrusionDataVector(const sick::datastructure::Data &data) {
@@ -477,11 +477,11 @@ void printMonitoringCaseFlags(const sick::datastructure::Data &data) {
     // Retrieve the monitoring case flags vector
     std::vector<uint16_t> flags = inputs.getMonitoringCasevector();
 
-    std::cout << "Monitoring Case Flags: ";
-    for (size_t i = 0; i < flags.size(); ++i) {
-        std::cout << "yep:" << i << " " << flags[i] << std::endl;
-    }
-    std::cout << std::endl;
+    // std::cout << "Monitoring Case Flags: " << std::endl;
+    // for (size_t i = 0; i < flags.size(); ++i) {
+    //     std::cout << "yep:[" << i << "] " << flags[i] << std::endl;
+    // }
+    // std::cout << std::endl;
 }
 
 void printSensorGeneralInfo(const sick::datastructure::Data &data) {
@@ -492,6 +492,95 @@ void printSensorGeneralInfo(const sick::datastructure::Data &data) {
     std::cout << "getStandbyModeActive: " << data.getGeneralSystemStatePtr()->getStandbyModeActive() << std::endl;
     std::cout << "getContaminationWarning: " << data.getGeneralSystemStatePtr()->getContaminationWarning() << std::endl;
     std::cout << "getContaminationError: " << data.getGeneralSystemStatePtr()->getContaminationError() << std::endl;
+    std::cout << "getManipulationStatus: " << data.getGeneralSystemStatePtr()->getManipulationStatus() << std::endl;
+
+    // safe cut off path vector
+    auto safe_cut_off = data.getGeneralSystemStatePtr()->getSafeCutOffPathVector();
+    std::cout << "safecutoffpathvector size: " << safe_cut_off.size() << std::endl;
+
+    // for (int i: safe_cut_off) {
+    //     std::cout << "safe_cut_off[" << i << "]: " << safe_cut_off[i] << std::endl;
+    // }
+
+    std::cout << "safe_cut_off[" << "0" << "]: " << safe_cut_off[0] << std::endl;
+    std::cout << "safe_cut_off[" << "1" << "]: " << safe_cut_off[1] << std::endl;
+    std::cout << "safe_cut_off[" << "2" << "]: " << safe_cut_off[2] << std::endl;
+    std::cout << "safe_cut_off[" << "3" << "]: " << safe_cut_off[3] << std::endl;
+    std::cout << "safe_cut_off[" << "4" << "]: " << safe_cut_off[4] << std::endl;
+    std::cout << "safe_cut_off[" << "5" << "]: " << safe_cut_off[5] << std::endl;
+    std::cout << "safe_cut_off[" << "6" << "]: " << safe_cut_off[6] << std::endl;
+    std::cout << "safe_cut_off[" << "7" << "]: " << safe_cut_off[7] << std::endl;
+    std::cout << "safe_cut_off[" << "8" << "]: " << safe_cut_off[8] << std::endl;
+    std::cout << "safe_cut_off[" << "9" << "]: " << safe_cut_off[9] << std::endl;
+    std::cout << "safe_cut_off[" << "10" << "]: " << safe_cut_off[10] << std::endl;
+    std::cout << "safe_cut_off[" << "11" << "]: " << safe_cut_off[11] << std::endl;
+    std::cout << "safe_cut_off[" << "12" << "]: " << safe_cut_off[12] << std::endl;
+    std::cout << "safe_cut_off[" << "13" << "]: " << safe_cut_off[13] << std::endl;
+    std::cout << "safe_cut_off[" << "14" << "]: " << safe_cut_off[14] << std::endl;
+    std::cout << "safe_cut_off[" << "15" << "]: " << safe_cut_off[15] << std::endl;
+    std::cout << "safe_cut_off[" << "16" << "]: " << safe_cut_off[16] << std::endl;
+    std::cout << "safe_cut_off[" << "17" << "]: " << safe_cut_off[17] << std::endl;
+    std::cout << "safe_cut_off[" << "18" << "]: " << safe_cut_off[18] << std::endl;
+    std::cout << "safe_cut_off[" << "19" << "]: " << safe_cut_off[19] << std::endl;
+
+    // NON-safe cut off path vector
+    auto non_safe_cut_off = data.getGeneralSystemStatePtr()->getNonSafeCutOffPathVector();
+    std::cout << "\ngetNonSafeCutOffPathVector size: " << non_safe_cut_off.size() << std::endl;
+
+    // for (int i: safe_cut_off) {
+    //     std::cout << "safe_cut_off[" << i << "]: " << safe_cut_off[i] << std::endl;
+    // }
+
+    std::cout << "non_safe_cut_off[" << "0" << "]: " << non_safe_cut_off[0] << std::endl;
+    std::cout << "non_safe_cut_off[" << "1" << "]: " << non_safe_cut_off[1] << std::endl;
+    std::cout << "non_safe_cut_off[" << "2" << "]: " << non_safe_cut_off[2] << std::endl;
+    std::cout << "non_safe_cut_off[" << "3" << "]: " << non_safe_cut_off[3] << std::endl;
+    std::cout << "non_safe_cut_off[" << "4" << "]: " << non_safe_cut_off[4] << std::endl;
+    std::cout << "non_safe_cut_off[" << "5" << "]: " << non_safe_cut_off[5] << std::endl;
+    std::cout << "non_safe_cut_off[" << "6" << "]: " << non_safe_cut_off[6] << std::endl;
+    std::cout << "non_safe_cut_off[" << "7" << "]: " << non_safe_cut_off[7] << std::endl;
+    std::cout << "non_safe_cut_off[" << "8" << "]: " << non_safe_cut_off[8] << std::endl;
+    std::cout << "non_safe_cut_off[" << "9" << "]: " << non_safe_cut_off[9] << std::endl;
+    std::cout << "non_safe_cut_off[" << "10" << "]: " << non_safe_cut_off[10] << std::endl;
+    std::cout << "non_safe_cut_off[" << "11" << "]: " << non_safe_cut_off[11] << std::endl;
+    std::cout << "non_safe_cut_off[" << "12" << "]: " << non_safe_cut_off[12] << std::endl;
+    std::cout << "non_safe_cut_off[" << "13" << "]: " << non_safe_cut_off[13] << std::endl;
+    std::cout << "non_safe_cut_off[" << "14" << "]: " << non_safe_cut_off[14] << std::endl;
+    std::cout << "non_safe_cut_off[" << "15" << "]: " << non_safe_cut_off[15] << std::endl;
+    std::cout << "non_safe_cut_off[" << "16" << "]: " << non_safe_cut_off[16] << std::endl;
+    std::cout << "non_safe_cut_off[" << "17" << "]: " << non_safe_cut_off[17] << std::endl;
+    std::cout << "non_safe_cut_off[" << "18" << "]: " << non_safe_cut_off[18] << std::endl;
+    std::cout << "non_safe_cut_off[" << "19" << "]: " << non_safe_cut_off[19] << std::endl;
+
+    // Reset-Required Cut Off Path Vector
+    // auto reset_required_cutoff = data.getGeneralSystemStatePtr()->getResetRequiredCutOffPathVector();
+    // std::cout << "\nreset_required_cutoff size: " << reset_required_cutoff.size() << std::endl;
+
+    // // for (int i: safe_cut_off) {
+    // //     std::cout << "safe_cut_off[" << i << "]: " << safe_cut_off[i] << std::endl;
+    // // }
+
+    // std::cout << "reset_required_cutoff[" << "0" << "]: " << reset_required_cutoff[0] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "1" << "]: " << reset_required_cutoff[1] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "2" << "]: " << reset_required_cutoff[2] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "3" << "]: " << reset_required_cutoff[3] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "4" << "]: " << reset_required_cutoff[4] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "5" << "]: " << reset_required_cutoff[5] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "6" << "]: " << reset_required_cutoff[6] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "7" << "]: " << reset_required_cutoff[7] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "8" << "]: " << reset_required_cutoff[8] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "9" << "]: " << reset_required_cutoff[9] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "10" << "]: " << reset_required_cutoff[10] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "11" << "]: " << reset_required_cutoff[11] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "12" << "]: " << reset_required_cutoff[12] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "13" << "]: " << reset_required_cutoff[13] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "14" << "]: " << reset_required_cutoff[14] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "15" << "]: " << reset_required_cutoff[15] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "16" << "]: " << reset_required_cutoff[16] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "17" << "]: " << reset_required_cutoff[17] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "18" << "]: " << reset_required_cutoff[18] << std::endl;
+    // std::cout << "reset_required_cutoff[" << "19" << "]: " << reset_required_cutoff[19] << std::endl;
+
     std::cout << "getApplicationError: " << data.getGeneralSystemStatePtr()->getApplicationError() << std::endl;
     std::cout << "getDeviceError: " << data.getGeneralSystemStatePtr()->getDeviceError() << std::endl;
     std::cout << "getSerialNumberOfDevice: " << data.getDataHeaderPtr()->getSerialNumberOfDevice() << std::endl;
@@ -503,29 +592,35 @@ void printSensorGeneralInfo(const sick::datastructure::Data &data) {
 void processSensorData(const sick::datastructure::Data &data) {
     std::lock_guard<std::mutex> lock(g_data_mutex);
     g_scan_points = data.getMeasurementDataPtr()->getScanPointsVector();
-    g_interrupted_beams.clear();
+    //g_interrupted_beams.clear();
 
 	// print metadata
 	printSensorGeneralInfo(data);
 	printMonitoringCaseFlags(data);
 	// printIntrusionDataVector(data);
 
-    bool sensor_status = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable1();
-    std::cout << "[Sensor Status]: " << (sensor_status ? "Good" : "Bad") << std::endl;
+    bool monitoring_case_1 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable1();
+    bool monitoring_case_2 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable2();
+    bool monitoring_case_3 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable3();    
+    bool monitoring_case_4 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable4();    
+    std::cout << "[monitoring_case_1]: " << (monitoring_case_1 ? "True" : "False") << std::endl;
+    std::cout << "[monitoring_case_2]: " << (monitoring_case_2 ? "True" : "False") << std::endl;
+    std::cout << "[monitoring_case_3]: " << (monitoring_case_3 ? "True" : "False") << std::endl;
+    std::cout << "[monitoring_case_4]: " << (monitoring_case_4 ? "True" : "False") << std::endl;
 
-    auto intrusion_data_vector = data.getIntrusionDataPtr()->getIntrusionDataVector();
-    for (const auto &intrusion_data : intrusion_data_vector) {
-        auto flags = intrusion_data.getFlagsVector();
-        for (size_t byte_idx = 0; byte_idx < flags.size(); ++byte_idx) {
-            uint8_t flag_byte = flags[byte_idx];
-            for (int bit = 0; bit < 8; ++bit) {
-                if (flag_byte & (1 << bit)) {
-                    g_interrupted_beams.push_back(byte_idx * 8 + bit);
-                    //std::cout << "Interrupted beam detected: " << (byte_idx * 8 + bit) << std::endl;
-                }
-            }
-        }
-    }
+    // auto intrusion_data_vector = data.getIntrusionDataPtr()->getIntrusionDataVector();
+    // for (const auto &intrusion_data : intrusion_data_vector) {
+    //     auto flags = intrusion_data.getFlagsVector();
+    //     for (size_t byte_idx = 0; byte_idx < flags.size(); ++byte_idx) {
+    //         uint8_t flag_byte = flags[byte_idx];
+    //         for (int bit = 0; bit < 8; ++bit) {
+    //             if (flag_byte & (1 << bit)) {
+    //                 g_interrupted_beams.push_back(byte_idx * 8 + bit);
+    //                 //std::cout << "Interrupted beam detected: " << (byte_idx * 8 + bit) << std::endl;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 void drawLidarData(cv::Mat &display) {
@@ -537,18 +632,29 @@ void drawLidarData(cv::Mat &display) {
     {
         std::lock_guard<std::mutex> lock(g_data_mutex);
         scan_points = g_scan_points;
-        interrupted_beams = g_interrupted_beams;
+        //interrupted_beams = g_interrupted_beams;
     }
+
 
     for (size_t i = 0; i < scan_points.size(); ++i) {
         const auto &point = scan_points[i];
         double angle_rad = point.getAngle() * M_PI / 180.0;
+        // bool print_once = false;
         double distance_m = point.getDistance() / 1000.0;
+        if ((point.getAngle() >= 180.0) && (point.getAngle() <= 181.0)) {
+            std::cout << "\nraw point.getAngle(): "<< point.getAngle() << std::endl;
+            std::cout << "distance_m: " << distance_m << std::endl;
+            //print_once = true;
+        }
+        //std::cout << "getValidBit(): " << point.getValidBit() << std::endl;
+        //double distance_m = point.getDistance();
         int x = static_cast<int>(distance_m * 50 * std::cos(angle_rad)) + 400;
         int y = static_cast<int>(distance_m * 50 * std::sin(angle_rad)) + 300;
 
-        bool is_interrupted = (std::find(interrupted_beams.begin(), interrupted_beams.end(), i) != interrupted_beams.end());
-        cv::circle(display, cv::Point(x, y), 2, is_interrupted ? cv::Scalar(255, 0, 0) : cv::Scalar(0, 0, 255), -1);
+        //bool is_interrupted = (std::find(interrupted_beams.begin(), interrupted_beams.end(), i) != interrupted_beams.end());
+        //cv::circle(display, cv::Point(x, y), 2, is_interrupted ? cv::Scalar(255, 0, 0) : cv::Scalar(0, 0, 255), -1);
+        cv::circle(display, cv::Point(x, y), 2, cv::Scalar(0, 0, 255), -1);
+
     }
     cv::imshow("LiDAR Real-Time Plot", display);
 }
@@ -572,7 +678,10 @@ int main() {
         safety_scanner->run();
         while (true) {
             drawLidarData(display);
-            if (cv::waitKey(30) == 27) break;
+            if (cv::waitKey(30) == 27) {
+                safety_scanner->stop();
+                break;
+            }
         }
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
