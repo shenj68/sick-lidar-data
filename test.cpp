@@ -448,6 +448,7 @@
 #include <cmath>
 #include <mutex>
 #include <typeinfo>
+#include <string>
 
 std::vector<sick::datastructure::ScanPoint> g_scan_points;
 //std::vector<int> g_interrupted_beams;
@@ -487,12 +488,12 @@ void printMonitoringCaseFlags(const sick::datastructure::Data &data) {
 void printSensorGeneralInfo(const sick::datastructure::Data &data) {
     std::cout << "---- Sensor General Information ----" << std::endl;
 
-    std::cout << "isEmpty: " << data.getGeneralSystemStatePtr()->isEmpty() << std::endl;
-    std::cout << "Get Run Mode Active: " << data.getGeneralSystemStatePtr()->getRunModeActive() << std::endl;
-    std::cout << "getStandbyModeActive: " << data.getGeneralSystemStatePtr()->getStandbyModeActive() << std::endl;
-    std::cout << "getContaminationWarning: " << data.getGeneralSystemStatePtr()->getContaminationWarning() << std::endl;
-    std::cout << "getContaminationError: " << data.getGeneralSystemStatePtr()->getContaminationError() << std::endl;
-    std::cout << "getManipulationStatus: " << data.getGeneralSystemStatePtr()->getManipulationStatus() << std::endl;
+    // std::cout << "isEmpty: " << data.getGeneralSystemStatePtr()->isEmpty() << std::endl;
+    // std::cout << "Get Run Mode Active: " << data.getGeneralSystemStatePtr()->getRunModeActive() << std::endl;
+    // std::cout << "getStandbyModeActive: " << data.getGeneralSystemStatePtr()->getStandbyModeActive() << std::endl;
+    // std::cout << "getContaminationWarning: " << data.getGeneralSystemStatePtr()->getContaminationWarning() << std::endl;
+    // std::cout << "getContaminationError: " << data.getGeneralSystemStatePtr()->getContaminationError() << std::endl;
+    // std::cout << "getManipulationStatus: " << data.getGeneralSystemStatePtr()->getManipulationStatus() << std::endl;
 
     // safe cut off path vector
     auto safe_cut_off = data.getGeneralSystemStatePtr()->getSafeCutOffPathVector();
@@ -502,26 +503,26 @@ void printSensorGeneralInfo(const sick::datastructure::Data &data) {
     //     std::cout << "safe_cut_off[" << i << "]: " << safe_cut_off[i] << std::endl;
     // }
 
-    std::cout << "safe_cut_off[" << "0" << "]: " << safe_cut_off[0] << std::endl;
-    std::cout << "safe_cut_off[" << "1" << "]: " << safe_cut_off[1] << std::endl;
-    std::cout << "safe_cut_off[" << "2" << "]: " << safe_cut_off[2] << std::endl;
-    std::cout << "safe_cut_off[" << "3" << "]: " << safe_cut_off[3] << std::endl;
-    std::cout << "safe_cut_off[" << "4" << "]: " << safe_cut_off[4] << std::endl;
-    std::cout << "safe_cut_off[" << "5" << "]: " << safe_cut_off[5] << std::endl;
-    std::cout << "safe_cut_off[" << "6" << "]: " << safe_cut_off[6] << std::endl;
-    std::cout << "safe_cut_off[" << "7" << "]: " << safe_cut_off[7] << std::endl;
-    std::cout << "safe_cut_off[" << "8" << "]: " << safe_cut_off[8] << std::endl;
-    std::cout << "safe_cut_off[" << "9" << "]: " << safe_cut_off[9] << std::endl;
-    std::cout << "safe_cut_off[" << "10" << "]: " << safe_cut_off[10] << std::endl;
-    std::cout << "safe_cut_off[" << "11" << "]: " << safe_cut_off[11] << std::endl;
-    std::cout << "safe_cut_off[" << "12" << "]: " << safe_cut_off[12] << std::endl;
-    std::cout << "safe_cut_off[" << "13" << "]: " << safe_cut_off[13] << std::endl;
-    std::cout << "safe_cut_off[" << "14" << "]: " << safe_cut_off[14] << std::endl;
-    std::cout << "safe_cut_off[" << "15" << "]: " << safe_cut_off[15] << std::endl;
-    std::cout << "safe_cut_off[" << "16" << "]: " << safe_cut_off[16] << std::endl;
-    std::cout << "safe_cut_off[" << "17" << "]: " << safe_cut_off[17] << std::endl;
-    std::cout << "safe_cut_off[" << "18" << "]: " << safe_cut_off[18] << std::endl;
-    std::cout << "safe_cut_off[" << "19" << "]: " << safe_cut_off[19] << std::endl;
+    // std::cout << "safe_cut_off[" << "0" << "]: " << safe_cut_off[0] << std::endl;
+    // std::cout << "safe_cut_off[" << "1" << "]: " << safe_cut_off[1] << std::endl;
+    // std::cout << "safe_cut_off[" << "2" << "]: " << safe_cut_off[2] << std::endl;
+    // std::cout << "safe_cut_off[" << "3" << "]: " << safe_cut_off[3] << std::endl;
+    // std::cout << "safe_cut_off[" << "4" << "]: " << safe_cut_off[4] << std::endl;
+    // std::cout << "safe_cut_off[" << "5" << "]: " << safe_cut_off[5] << std::endl;
+    // std::cout << "safe_cut_off[" << "6" << "]: " << safe_cut_off[6] << std::endl;
+    // std::cout << "safe_cut_off[" << "7" << "]: " << safe_cut_off[7] << std::endl;
+    // std::cout << "safe_cut_off[" << "8" << "]: " << safe_cut_off[8] << std::endl;
+    // std::cout << "safe_cut_off[" << "9" << "]: " << safe_cut_off[9] << std::endl;
+    // std::cout << "safe_cut_off[" << "10" << "]: " << safe_cut_off[10] << std::endl;
+    // std::cout << "safe_cut_off[" << "11" << "]: " << safe_cut_off[11] << std::endl;
+    // std::cout << "safe_cut_off[" << "12" << "]: " << safe_cut_off[12] << std::endl;
+    // std::cout << "safe_cut_off[" << "13" << "]: " << safe_cut_off[13] << std::endl;
+    // std::cout << "safe_cut_off[" << "14" << "]: " << safe_cut_off[14] << std::endl;
+    // std::cout << "safe_cut_off[" << "15" << "]: " << safe_cut_off[15] << std::endl;
+    // std::cout << "safe_cut_off[" << "16" << "]: " << safe_cut_off[16] << std::endl;
+    // std::cout << "safe_cut_off[" << "17" << "]: " << safe_cut_off[17] << std::endl;
+    // std::cout << "safe_cut_off[" << "18" << "]: " << safe_cut_off[18] << std::endl;
+    // std::cout << "safe_cut_off[" << "19" << "]: " << safe_cut_off[19] << std::endl;
 
     // NON-safe cut off path vector
     auto non_safe_cut_off = data.getGeneralSystemStatePtr()->getNonSafeCutOffPathVector();
@@ -531,26 +532,26 @@ void printSensorGeneralInfo(const sick::datastructure::Data &data) {
     //     std::cout << "safe_cut_off[" << i << "]: " << safe_cut_off[i] << std::endl;
     // }
 
-    std::cout << "non_safe_cut_off[" << "0" << "]: " << non_safe_cut_off[0] << std::endl;
-    std::cout << "non_safe_cut_off[" << "1" << "]: " << non_safe_cut_off[1] << std::endl;
-    std::cout << "non_safe_cut_off[" << "2" << "]: " << non_safe_cut_off[2] << std::endl;
-    std::cout << "non_safe_cut_off[" << "3" << "]: " << non_safe_cut_off[3] << std::endl;
-    std::cout << "non_safe_cut_off[" << "4" << "]: " << non_safe_cut_off[4] << std::endl;
-    std::cout << "non_safe_cut_off[" << "5" << "]: " << non_safe_cut_off[5] << std::endl;
-    std::cout << "non_safe_cut_off[" << "6" << "]: " << non_safe_cut_off[6] << std::endl;
-    std::cout << "non_safe_cut_off[" << "7" << "]: " << non_safe_cut_off[7] << std::endl;
-    std::cout << "non_safe_cut_off[" << "8" << "]: " << non_safe_cut_off[8] << std::endl;
-    std::cout << "non_safe_cut_off[" << "9" << "]: " << non_safe_cut_off[9] << std::endl;
-    std::cout << "non_safe_cut_off[" << "10" << "]: " << non_safe_cut_off[10] << std::endl;
-    std::cout << "non_safe_cut_off[" << "11" << "]: " << non_safe_cut_off[11] << std::endl;
-    std::cout << "non_safe_cut_off[" << "12" << "]: " << non_safe_cut_off[12] << std::endl;
-    std::cout << "non_safe_cut_off[" << "13" << "]: " << non_safe_cut_off[13] << std::endl;
-    std::cout << "non_safe_cut_off[" << "14" << "]: " << non_safe_cut_off[14] << std::endl;
-    std::cout << "non_safe_cut_off[" << "15" << "]: " << non_safe_cut_off[15] << std::endl;
-    std::cout << "non_safe_cut_off[" << "16" << "]: " << non_safe_cut_off[16] << std::endl;
-    std::cout << "non_safe_cut_off[" << "17" << "]: " << non_safe_cut_off[17] << std::endl;
-    std::cout << "non_safe_cut_off[" << "18" << "]: " << non_safe_cut_off[18] << std::endl;
-    std::cout << "non_safe_cut_off[" << "19" << "]: " << non_safe_cut_off[19] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "0" << "]: " << non_safe_cut_off[0] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "1" << "]: " << non_safe_cut_off[1] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "2" << "]: " << non_safe_cut_off[2] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "3" << "]: " << non_safe_cut_off[3] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "4" << "]: " << non_safe_cut_off[4] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "5" << "]: " << non_safe_cut_off[5] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "6" << "]: " << non_safe_cut_off[6] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "7" << "]: " << non_safe_cut_off[7] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "8" << "]: " << non_safe_cut_off[8] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "9" << "]: " << non_safe_cut_off[9] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "10" << "]: " << non_safe_cut_off[10] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "11" << "]: " << non_safe_cut_off[11] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "12" << "]: " << non_safe_cut_off[12] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "13" << "]: " << non_safe_cut_off[13] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "14" << "]: " << non_safe_cut_off[14] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "15" << "]: " << non_safe_cut_off[15] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "16" << "]: " << non_safe_cut_off[16] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "17" << "]: " << non_safe_cut_off[17] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "18" << "]: " << non_safe_cut_off[18] << std::endl;
+    // std::cout << "non_safe_cut_off[" << "19" << "]: " << non_safe_cut_off[19] << std::endl;
 
     // Reset-Required Cut Off Path Vector
     // auto reset_required_cutoff = data.getGeneralSystemStatePtr()->getResetRequiredCutOffPathVector();
@@ -581,32 +582,75 @@ void printSensorGeneralInfo(const sick::datastructure::Data &data) {
     // std::cout << "reset_required_cutoff[" << "18" << "]: " << reset_required_cutoff[18] << std::endl;
     // std::cout << "reset_required_cutoff[" << "19" << "]: " << reset_required_cutoff[19] << std::endl;
 
-    std::cout << "getApplicationError: " << data.getGeneralSystemStatePtr()->getApplicationError() << std::endl;
-    std::cout << "getDeviceError: " << data.getGeneralSystemStatePtr()->getDeviceError() << std::endl;
-    std::cout << "getSerialNumberOfDevice: " << data.getDataHeaderPtr()->getSerialNumberOfDevice() << std::endl;
-	std::cout << "getMultiplicationFactor: " << data.getDerivedValuesPtr()->getMultiplicationFactor() << std::endl;
+    // std::cout << "getApplicationError: " << data.getGeneralSystemStatePtr()->getApplicationError() << std::endl;
+    // std::cout << "getDeviceError: " << data.getGeneralSystemStatePtr()->getDeviceError() << std::endl;
+    // std::cout << "getSerialNumberOfDevice: " << data.getDataHeaderPtr()->getSerialNumberOfDevice() << std::endl;
+	// std::cout << "getMultiplicationFactor: " << data.getDerivedValuesPtr()->getMultiplicationFactor() << std::endl;
 	
 	std::cout << "------------------------------------" << std::endl;
 }
 
+ 
 void processSensorData(const sick::datastructure::Data &data) {
     std::lock_guard<std::mutex> lock(g_data_mutex);
     g_scan_points = data.getMeasurementDataPtr()->getScanPointsVector();
     //g_interrupted_beams.clear();
+    
+    // field set
+    sick::datastructure::FieldSets field_set_obj;
+    auto yer = field_set_obj.getFieldName();
+
+    std::cout << "\n yer.size(): " << yer.size() << std::endl;
+
+    for (size_t i = 0; i < yer.size(); i++) {
+        std::cout << "getFieldName[" << i << "]: " << yer[i] <<std::endl;
+    }
+
+    // {field_data}
+    const sick::datastructure::FieldData field_data_obj;
+    bool valid_field_data = field_data_obj.getIsValid();
+    bool tester_bool = true;
+    std::cout << "valid_field_data: " << valid_field_data << std::endl;
+    std::cout << "is defined: " << bool(field_data_obj.getIsDefined()) << std::endl;
+    std::cout << "tester bool: " << tester_bool << std::endl;
+    uint8_t weee = field_data_obj.getVersionMajorVersionNumber();
+    std::cout << "getMultiSampling: " << field_data_obj.getMultiSampling() << std::endl;
+    std::cout << "getFieldSetIndex: " << field_data_obj.getFieldSetIndex() << std::endl;
+    std::cout << "getIsProtectiveField: " << field_data_obj.getIsProtectiveField() << std::endl;
+    std::cout << "getIsWarningField: " << field_data_obj.getIsWarningField() << std::endl;
+    std::cout << "getStartAngle: " << field_data_obj.getStartAngle() << std::endl;
+
+
+    // if valid field data then extract field data?
+    if (valid_field_data) {
+        std::string curr_field_name = field_data_obj.getFieldName();
+        std::cout << "curr_field_name: " << curr_field_name << std::endl;
+    }
+
+    // monitoringcasedata
+    sick::datastructure::MonitoringCaseData mon_case_data;
+    auto get_field_indices = mon_case_data.getFieldIndices();
+
+    auto valid_monitor = mon_case_data.getIsValid();
+    std::cout << "valid_monitor: " << valid_monitor << std::endl;
+
+    for (int i: get_field_indices) {
+        std::cout << "get_field_indices[" << i << "]: " << get_field_indices[i] <<std::endl;
+    }
 
 	// print metadata
 	printSensorGeneralInfo(data);
 	printMonitoringCaseFlags(data);
 	// printIntrusionDataVector(data);
 
-    bool monitoring_case_1 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable1();
-    bool monitoring_case_2 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable2();
-    bool monitoring_case_3 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable3();    
-    bool monitoring_case_4 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable4();    
-    std::cout << "[monitoring_case_1]: " << (monitoring_case_1 ? "True" : "False") << std::endl;
-    std::cout << "[monitoring_case_2]: " << (monitoring_case_2 ? "True" : "False") << std::endl;
-    std::cout << "[monitoring_case_3]: " << (monitoring_case_3 ? "True" : "False") << std::endl;
-    std::cout << "[monitoring_case_4]: " << (monitoring_case_4 ? "True" : "False") << std::endl;
+    // bool monitoring_case_1 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable1();
+    // bool monitoring_case_2 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable2();
+    // bool monitoring_case_3 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable3();    
+    // bool monitoring_case_4 = data.getGeneralSystemStatePtr()->getCurrentMonitoringCaseNoTable4();    
+    // std::cout << "[monitoring_case_1]: " << (monitoring_case_1 ? "True" : "False") << std::endl;
+    // std::cout << "[monitoring_case_2]: " << (monitoring_case_2 ? "True" : "False") << std::endl;
+    // std::cout << "[monitoring_case_3]: " << (monitoring_case_3 ? "True" : "False") << std::endl;
+    // std::cout << "[monitoring_case_4]: " << (monitoring_case_4 ? "True" : "False") << std::endl;
 
     // auto intrusion_data_vector = data.getIntrusionDataPtr()->getIntrusionDataVector();
     // for (const auto &intrusion_data : intrusion_data_vector) {
@@ -641,11 +685,11 @@ void drawLidarData(cv::Mat &display) {
         double angle_rad = point.getAngle() * M_PI / 180.0;
         // bool print_once = false;
         double distance_m = point.getDistance() / 1000.0;
-        if ((point.getAngle() >= 180.0) && (point.getAngle() <= 181.0)) {
-            std::cout << "\nraw point.getAngle(): "<< point.getAngle() << std::endl;
-            std::cout << "distance_m: " << distance_m << std::endl;
-            //print_once = true;
-        }
+        // if ((point.getAngle() >= 180.0) && (point.getAngle() <= 181.0)) {
+        //     std::cout << "\nraw point.getAngle(): "<< point.getAngle() << std::endl;
+        //     std::cout << "distance_m: " << distance_m << std::endl;
+        //     //print_once = true;
+        // }
         //std::cout << "getValidBit(): " << point.getValidBit() << std::endl;
         //double distance_m = point.getDistance();
         int x = static_cast<int>(distance_m * 50 * std::cos(angle_rad)) + 400;
